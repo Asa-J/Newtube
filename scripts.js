@@ -15,7 +15,7 @@ function getFormattedDate() {
   var month = addExtraZero(now.getUTCMonth() + 1);
   var date = addExtraZero(now.getUTCDate());
   var hour = addExtraZero(now.getUTCHours());
-  var minute = addExtraZero(now.getUTCMinutes());
+  var minute = addExtraZero(now.getUTCMinutes() - 1);
   var formattedDate = year + '-' + month + '-' + date + 'T' + hour + ':' + minute + ':00.000Z';
   return formattedDate;
 }
@@ -36,10 +36,27 @@ xmlhttp.send();
 
 function buildPage(array) {
   console.log('got here');
+  //document.getElementById("iframe1").src='http://youtube.com/embed/' + array.items[0].id.videoId + '?autoplay=0';
   document.getElementById("video1").href='http://youtube.com/watch?v=' + array.items[0].id.videoId;
   document.getElementById("video2").href='http://youtube.com/watch?v=' +  array.items[1].id.videoId;
   document.getElementById("video3").href='http://youtube.com/watch?v=' + array.items[2].id.videoId;
   document.getElementById("video4").href='http://youtube.com/watch?v=' + array.items[3].id.videoId;
   document.getElementById("video5").href='http://youtube.com/watch?v=' + array.items[4].id.videoId;
+  document.getElementById("title1").innerHTML = array.items[0].snippet.title + "<br>";
+  document.getElementById("title2").innerHTML = array.items[1].snippet.title + "<br>";
+  document.getElementById("title3").innerHTML = array.items[2].snippet.title + "<br>";
+  document.getElementById("title4").innerHTML = array.items[3].snippet.title + "<br>";
+  document.getElementById("title5").innerHTML = array.items[4].snippet.title + "<br>";
+  document.getElementById("description1").innerHTML = array.items[0].snippet.description;
+  document.getElementById("description2").innerHTML = array.items[1].snippet.description;
+  document.getElementById("description3").innerHTML = array.items[2].snippet.description;
+  document.getElementById("description4").innerHTML = array.items[3].snippet.description;
+  document.getElementById("description5").innerHTML = array.items[4].snippet.description;
+  document.getElementById("thumbnail1").src = array.items[0].snippet.thumbnails.default.url;
+  document.getElementById("thumbnail2").src = array.items[1].snippet.thumbnails.default.url;
+  document.getElementById("thumbnail3").src = array.items[2].snippet.thumbnails.default.url;
+  document.getElementById("thumbnail4").src = array.items[3].snippet.thumbnails.default.url;
+  document.getElementById("thumbnail5").src = array.items[4].snippet.thumbnails.default.url;
+
   //console.log(arr[0]);
 }
